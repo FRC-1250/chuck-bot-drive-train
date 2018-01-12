@@ -8,11 +8,14 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.drive.*;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.RobotDrive;
 
 public class Robot extends IterativeRobot {
-	private DifferentialDrive m_myRobot;
-	private Joystick m_leftStick;
-	private Joystick m_rightStick;
+
+	Joystick RightStick = new Joystick(0);
+	Joystick LeftStick = new Joystick(1);
+	
+	RobotDrive RobotDrive;
 	
 	WPI_TalonSRX FrontRight;
 	WPI_TalonSRX FrontLeft;
@@ -29,14 +32,13 @@ public class Robot extends IterativeRobot {
 		FrontLeft = new WPI_TalonSRX(12);
 		BackLeft = new WPI_TalonSRX(13);
 		SpeedControllerGroup left = new SpeedControllerGroup(FrontLeft, BackLeft);
-		
-		m_myRobot = new DifferentialDrive(right, left);
-		m_leftStick = new Joystick(0);
-		m_rightStick = new Joystick(1);
+		RobotDrive = new RobotDrive(right,left);
+
 	}
 
 	@Override
 	public void teleopPeriodic() {
-		m_myRobot.tankDrive(m_leftStick.getY(), m_rightStick.getY());
+		RobotDrive.tankDrive(LeftStick.getY(), RightStick.getY());
+		//RobotDrive.tankDrive(RightStick, LeftStick);
 	}
 }
