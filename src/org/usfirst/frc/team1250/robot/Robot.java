@@ -1,44 +1,45 @@
-//Def mine code :)
-package org.usfirst.frc.team1250.robot;
 
+package org.usfirst.frc.team1250.robot;
+import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import com.ctre.phoenix.motorcontrol.can.*;
-import edu.wpi.first.wpilibj.drive.*;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.RobotDrive;
 
+/**
+ * The VM is configured to automatically run this class, and to call the
+ * functions corresponding to each mode, as described in the IterativeRobot
+ * documentation. If you change the name of this class or the package after
+ * creating this project, you must also update the manifest file in the resource
+ * directory.
+ */
 public class Robot extends IterativeRobot {
 
-	Joystick RightStick = new Joystick(0);
-	Joystick LeftStick = new Joystick(1);
-	
-	RobotDrive RobotDrive;
-	
-	WPI_TalonSRX FrontRight;
-	WPI_TalonSRX FrontLeft;
-	WPI_TalonSRX BackRight;
-	WPI_TalonSRX BackLeft;
-		
-	
-	@Override
-	public void robotInit() {
-		
-		FrontRight = new WPI_TalonSRX(10);
-		BackLeft = new WPI_TalonSRX(11);
-		SpeedControllerGroup right = new SpeedControllerGroup(FrontRight, BackRight);
-		FrontLeft = new WPI_TalonSRX(12);
-		BackLeft = new WPI_TalonSRX(13);
-		SpeedControllerGroup left = new SpeedControllerGroup(FrontLeft, BackLeft);
-		RobotDrive = new RobotDrive(right,left);
+	/* talons for arcade drive */
+	WPI_TalonSRX _frontLeftMotor = new WPI_TalonSRX(14); 		/* device IDs here (1 of 2) */
+	WPI_TalonSRX _frontRightMotor = new WPI_TalonSRX(15);
 
-	}
+	/* extra talons for six motor drives */
+	WPI_TalonSRX _leftSlave1 = new WPI_TalonSRX(10);
+	WPI_TalonSRX _rightSlave1 = new WPI_TalonSRX(13);
+	
+	
+	DifferentialDrive _drive = new DifferentialDrive(_frontLeftMotor, _frontRightMotor);
+	
+	Joystick _joy = new Joystick(0);
+    /**
+     * This function is run when the robot is first started up and should be
+     * used for any initialization code.
+     */
+    public void robotInit() {
 
-	@Override
-	public void teleopPeriodic() {
-		RobotDrive.tankDrive(LeftStick.getY(), RightStick.getY());
-		//RobotDrive.tankDrive(RightStick, LeftStick);
-	}
+    }
+
+    /**
+     * This function is called periodically during operator control
+     */
+    public void teleopPeriodic() {
+    	double forward = _joy.getY(); // logitech gampad left X, positive is forward
+    	double turn = _joy.getZ(); //logitech gampad right X, positive means turn right
+    	_drive.arcadeDrive(forward, turn);
+    }
 }
