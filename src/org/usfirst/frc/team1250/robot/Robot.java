@@ -38,8 +38,8 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-    	double forward = _joy.getY(); // logitech gampad left X, positive is forward
-    	double turn = _joy.getZ(); //logitech gampad right X, positive means turn right
-    	_drive.arcadeDrive(forward, turn);
+    	double LeftStick = _joy.getY();
+    	double RightStick = _joy.getThrottle(); 
+    	_drive.tankDrive(LeftStick, RightStick);
     }
 }
