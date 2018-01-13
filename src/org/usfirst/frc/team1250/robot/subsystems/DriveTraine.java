@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.*;
 import org.usfirst.frc.team1250.robot.RobotMap;
 import org.usfirst.frc.team1250.robot.commands.DriveTankWithJoystick;
@@ -15,17 +15,13 @@ import org.usfirst.frc.team1250.robot.commands.DriveTankWithJoystick;
  */
 public class DriveTraine extends Subsystem {
 
-
-	WPI_TalonSRX _frontLeftMotor  = RobotMap._frontLeftMotor;
-	WPI_TalonSRX _frontRightMotor = RobotMap._frontRightMotor;
-	WPI_TalonSRX _backLeftMotor   = RobotMap._backLeftMotor;
-	WPI_TalonSRX _backRightMotor  = RobotMap._backRightMotor;
+	
 	
 	private SpeedController m_leftMotor
-	= new SpeedControllerGroup(_frontLeftMotor, _backLeftMotor);
+	= new SpeedControllerGroup(new WPI_TalonSRX(RobotMap._frontLeftMotor), new WPI_TalonSRX(RobotMap._backLeftMotor));
 	
 	private SpeedController m_rightMotor
-	= new SpeedControllerGroup(_frontRightMotor, _backRightMotor);
+	= new SpeedControllerGroup(new WPI_TalonSRX(RobotMap._frontRightMotor), new WPI_TalonSRX(RobotMap._backRightMotor));
 	
 	private DifferentialDrive m_drive
 	= new DifferentialDrive(m_leftMotor, m_rightMotor);
@@ -34,6 +30,8 @@ public class DriveTraine extends Subsystem {
 	public DriveTraine() {
 		// Extends Subsystem class
 		super();
+		
+
 	}
 	
 	

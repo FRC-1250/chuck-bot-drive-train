@@ -7,41 +7,21 @@
 
 package org.usfirst.frc.team1250.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import edu.wpi.first.wpilibj.DigitalInput;
-
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class RobotMap {
 
-	public static WPI_TalonSRX _frontLeftMotor;
-	public static WPI_TalonSRX _frontRightMotor;
-	public static WPI_TalonSRX _backLeftMotor;
-	public static WPI_TalonSRX _backRightMotor;
-	public static WPI_VictorSPX _LeftClaw;
-	public static WPI_VictorSPX _RightClaw;
-	public static DigitalInput _LightSensClaw;
-	public static DigitalInput _LaserSensClaw;
+	public static final int _frontLeftMotor = 10;
+	public static final int _frontRightMotor = 12;
+	public static final int _backLeftMotor = 11;
+	public static final int _backRightMotor = 13;
+	public static final int _LeftClaw = 10;
+	public static final int _RightClaw = 11;
+	public static final int _LightSensClaw = 1;
+	public static final int _LaserSensClaw = 2;
 	
-	public static void init() {
-		
-		_frontLeftMotor = new WPI_TalonSRX(14);
-		_frontRightMotor = new WPI_TalonSRX(15);
-		_backLeftMotor = new WPI_TalonSRX(10);
-		_backRightMotor = new WPI_TalonSRX(13);
-		_LeftClaw = new WPI_VictorSPX(10);
-		_RightClaw = new WPI_VictorSPX(11);
-		_LightSensClaw = new DigitalInput(1);
-		_LaserSensClaw = new DigitalInput(2);
+
 		 
 	}
 
-}
 
 
 
