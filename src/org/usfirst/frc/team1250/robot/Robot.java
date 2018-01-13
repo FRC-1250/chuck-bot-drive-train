@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * The VM is configured to automatically run this class, and to call the
