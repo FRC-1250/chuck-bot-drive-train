@@ -48,5 +48,9 @@ public class OI {
 		
 	}
 	
+	public Joystick getGamepad() {
+		return Gamepad;
+	}
+	
 	
 }
