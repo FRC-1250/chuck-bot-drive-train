@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team1250.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -14,13 +16,29 @@ package org.usfirst.frc.team1250.robot;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
 
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+	public static WPI_TalonSRX _frontLeftMotor;
+	public static WPI_TalonSRX _frontRightMotor;
+	public static WPI_TalonSRX _backLeftMotor;
+	public static WPI_TalonSRX _backRightMotor;
+	
+	public static void init() {
+		
+		_frontLeftMotor = new WPI_TalonSRX(14);
+		_frontRightMotor = new WPI_TalonSRX(15);
+		_backLeftMotor = new WPI_TalonSRX(10);
+		_backRightMotor = new WPI_TalonSRX(13);
+		
+	}
+
 }
+
+
+
+///* talons for arcade drive */
+//WPI_TalonSRX _frontLeftMotor = new WPI_TalonSRX(14); 		/* device IDs here (1 of 2) */
+//WPI_TalonSRX _frontRightMotor = new WPI_TalonSRX(15);
+//
+///* extra talons for six motor drives */
+//WPI_TalonSRX _leftSlave1 = new WPI_TalonSRX(10);
+//WPI_TalonSRX _rightSlave1 = new WPI_TalonSRX(13);
