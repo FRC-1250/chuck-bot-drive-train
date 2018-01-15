@@ -5,6 +5,11 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
+import com.ctre.phoenix.motorcontrol.can.*;
 
 
 public class Claw extends Subsystem {
@@ -16,6 +21,7 @@ public class Claw extends Subsystem {
 	private Solenoid SoloLift = new Solenoid(RobotMap._SoloLift);
 	private DigitalInput LightSens = new DigitalInput(RobotMap._LightSensClaw);
 	private DigitalInput LaserSens = new DigitalInput(RobotMap._LaserSensClaw);
+	private WPI_TalonSRX Test = new WPI_TalonSRX(RobotMap._Test);
 	
 public Claw() {
 	
@@ -56,11 +62,20 @@ public Claw() {
 	public void soloLiftUnPinch() {
 		SoloLift.set(false);
 	}
+	public void Spin() {
+		Test.set(.3);
+	}
+	public void statusUpdate() {
+		Test.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		System.out.println("Percent");
+		System.out.println(Test.getMotorOutputPercent());
+		System.out.println("Velocity");
+		System.out.println(Test.getSelectedSensorVelocity(0));
+	}
 	
 
 		@Override
 		protected void initDefaultCommand() {
-
 			
 		}
 }
