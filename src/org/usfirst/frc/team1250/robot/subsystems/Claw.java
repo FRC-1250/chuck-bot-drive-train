@@ -22,6 +22,7 @@ public class Claw extends Subsystem {
 	private DigitalInput LightSens = new DigitalInput(RobotMap._LightSensClaw);
 	private DigitalInput LaserSens = new DigitalInput(RobotMap._LaserSensClaw);
 	private WPI_TalonSRX Test = new WPI_TalonSRX(RobotMap._Test);
+	private DigitalInput LightSensTwo = new DigitalInput(RobotMap._LightSensClawTwo);
 	
 public Claw() {
 	
@@ -34,6 +35,18 @@ public Claw() {
 	public void dump() {
 		LeftClaw.set(-.5);
 		RightClaw.set(.5);
+	}
+	public void leftCollect() {
+		LeftClaw.set(.5);
+	}
+	public void rightCollect() {
+		RightClaw.set(-.5);
+	}
+	public void stopleftCollect() {
+		LeftClaw.set(0);
+	}
+	public void stoprightCollect() {
+		RightClaw.set(0);
 	}
 	public void stop() {
 		LeftClaw.set(0);
@@ -50,11 +63,14 @@ public Claw() {
 	public boolean CheckSoloClaw() {
 		return SoloLeft.get();
 	}
-	public boolean isSeen() {
+	public boolean isIn() {
 		return LaserSens.get();
 	}
-	public boolean isIn() {
+	public boolean isSeenLeft() {
 		return LightSens.get();
+	}
+	public boolean isSeenRight() {
+		return LightSensTwo.get();
 	}
 	public void soloLiftPinch() {
 		SoloLift.set(true);

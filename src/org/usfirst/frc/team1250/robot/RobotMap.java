@@ -21,6 +21,7 @@ public class RobotMap {
 	public static final int _SoloLeft = 1;
 	public static final int _SoloLift = 2;
 	public static final int _Test = 18;
+	public static final int _LightSensClawTwo = 2;
 	
 	
 
