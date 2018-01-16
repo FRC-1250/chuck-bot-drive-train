@@ -11,6 +11,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.*;
 import org.usfirst.frc.team1250.robot.RobotMap;
 import org.usfirst.frc.team1250.robot.commands.DriveTankWithJoystick;
+
+import java.lang.Math;
 /**
  *
  */
@@ -21,7 +23,7 @@ public class DriveTraine extends Subsystem {
 	WPI_TalonSRX fRightMotor = new WPI_TalonSRX(RobotMap._frontRightMotor);
 	WPI_TalonSRX bRightMotor = new WPI_TalonSRX(RobotMap._backRightMotor);
 	
-	
+///	
 	private SpeedController m_leftMotor
 	= new SpeedControllerGroup(fLeftMotor, bLeftMotor);
 	
@@ -32,10 +34,20 @@ public class DriveTraine extends Subsystem {
 	= new DifferentialDrive(m_leftMotor, m_rightMotor);
 	
 	 private Solenoid Solenoid0 = new Solenoid(1);
-
-
 	 private Solenoid Solenoid1 = new Solenoid(2);
 
+ ///
+	 
+	 private static char kShiftState = 'l';
+	 private final int kHighRPMThresh= 1000;
+	 private final int kLowRPMThresh = 500;
+
+	private int rRPM = 0;
+	private int lRPM =  0;
+	private float lJoy = 0;
+	private float rJoy = 0;
+	private static boolean joyCompare = false;
+	private static boolean rpmCompare = false;
 	
 	public DriveTraine() {
 		// Extends Subsystem class
@@ -102,16 +114,44 @@ public class DriveTraine extends Subsystem {
 		
 	}
 	
-	public int getRightRPM() {
+	private int getRightRPM() {
 		int velocity;
 		velocity = fRightMotor.getSelectedSensorVelocity(0);
 		return velocity;
 	}
 	
-	public int getLeftRPM() {
+	private int getLeftRPM() {
 		int velocity;
 		velocity = fLeftMotor.getSelectedSensorVelocity(0);
 		return velocity;
 	}
+	
+	public char getState(Joystick joy, char state) {
+		
+		rRPM = getRightRPM();
+		lRPM =  getLeftRPM();
+		lJoy = (float)-joy.getY();
+		rJoy = (float)-joy.getThrottle();
+		
+		// Signs of the inputs
+		//int lJoySign = (int)Math.signum(lJoy);
+		//int rJoySign = (int)Math.signum(rJoy);
+//		int lRPMSign = (int)Math.signum(lRPM);
+//		int rRPMSign = (int)Math.signum(rRPM);
+		
+		
+		// Check for joystick direction change and RPM Change
+		joyCompare = ((int)Math.signum(lJoy) != (int)Math.signum(rJoy));
+		rpmCompare = ((int)Math.signum(lRPM) != (int)Math.signum(rRPM));
+		
+		
+		
+		
+		
+		return 'l';
+		
+		
+	}
+	
 }
 
