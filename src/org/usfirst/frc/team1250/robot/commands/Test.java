@@ -1,3 +1,4 @@
+//For testing the motor outs (ENCs)
 package org.usfirst.frc.team1250.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;

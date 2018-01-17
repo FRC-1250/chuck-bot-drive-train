@@ -1,3 +1,4 @@
+//This is a claw command , OP uses this to manually stop the claw
 package org.usfirst.frc.team1250.robot.commands;
 
 import org.usfirst.frc.team1250.robot.Robot;
