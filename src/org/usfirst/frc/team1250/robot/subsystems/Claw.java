@@ -10,7 +10,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.*;
-
+import org.usfirst.frc.team1250.robot.commands.PassiveClawCollect;;
 
 public class Claw extends Subsystem {
 
@@ -92,6 +92,6 @@ public Claw() {
 
 		@Override
 		protected void initDefaultCommand() {
-			
+			setDefaultCommand(new PassiveClawCollect());
 		}
 }
