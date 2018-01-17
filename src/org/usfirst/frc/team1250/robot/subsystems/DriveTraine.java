@@ -133,6 +133,7 @@ public class DriveTraine extends Subsystem {
 		lJoy = (float)-joy.getY();
 		rJoy = (float)-joy.getThrottle();
 		
+		
 		// Signs of the inputs
 		//int lJoySign = (int)Math.signum(lJoy);
 		//int rJoySign = (int)Math.signum(rJoy);
@@ -144,11 +145,19 @@ public class DriveTraine extends Subsystem {
 		joyCompare = ((int)Math.signum(lJoy) != (int)Math.signum(rJoy));
 		rpmCompare = ((int)Math.signum(lRPM) != (int)Math.signum(rRPM));
 		
+		if (joyCompare || rpmCompare) {	
+			return 'l';		
+		}
+		else if(state == 'h' && (rRPM< kLowRPMThresh || lRPM<kLowRPMThresh )) {
+			return 'l';
+		}
+		else if (rRPM > kHighRPMThresh && lRPM > kHighRPMThresh && state == 'l') {
+			return 'h';
+		}
+		 else  {
+			return state;
+		} 
 		
-		
-		
-		
-		return 'l';
 		
 		
 	}

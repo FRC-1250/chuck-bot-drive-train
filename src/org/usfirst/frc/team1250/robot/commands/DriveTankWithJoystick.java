@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveTankWithJoystick extends Command {
 	
-
+	private static char shiftState = 'l';
+	
     public DriveTankWithJoystick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -22,6 +23,8 @@ public class DriveTankWithJoystick extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.m_drivetrain.drive(Robot.m_oi.getGamepad());
+    	shiftState = Robot.m_drivetrain.getState(Robot.m_oi.getGamepad(), shiftState);
+    	System.out.println(shiftState);
     }
 
     // Make this return true when this Command no longer needs to run execute()

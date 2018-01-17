@@ -1,0 +1,4 @@
+# WPILib
+bin/
+build/
+dist/
