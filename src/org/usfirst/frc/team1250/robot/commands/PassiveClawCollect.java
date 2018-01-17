@@ -18,7 +18,7 @@ public class PassiveClawCollect extends Command {
     	if (!Robot.m_claw.isSeenRight()){
     		Robot.m_claw.rightCollect();
     	}
-    	else Robot.m_claw.stoprightCollect();
+    		else Robot.m_claw.stoprightCollect();
     	if (!Robot.m_claw.isSeenRight() & !Robot.m_claw.isSeenLeft()){
     		Robot.m_claw.collect();
     		Robot.m_claw.pinch();
@@ -26,7 +26,9 @@ public class PassiveClawCollect extends Command {
     		else 
     		Robot.m_claw.stop();
     		Robot.m_claw.unpinch();
-    		
+    	if (!Robot.m_claw.isIn()) {
+    		Robot.m_claw.soloLiftPinch();		
+    	}
     }
 
         protected void execute() {

@@ -16,7 +16,7 @@ public class RobotMap {
 	public static final int _LeftClaw = 10;
 	public static final int _RightClaw = 11;
 	public static final int _LightSensClaw = 0;
-	public static final int _LaserSensClaw = 2;
+	public static final int _LaserSensClaw = 1;
 	public static final int _SoloRight = 0;
 	public static final int _SoloLeft = 1;
 	public static final int _SoloLift = 2;
