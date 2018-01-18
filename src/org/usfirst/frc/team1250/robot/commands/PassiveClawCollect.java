@@ -8,7 +8,7 @@ import org.usfirst.frc.team1250.robot.Robot;
 public class PassiveClawCollect extends Command {
 
     public PassiveClawCollect() {
-
+    	requires(Robot.m_claw);
     }
 
     protected void initialize() {
