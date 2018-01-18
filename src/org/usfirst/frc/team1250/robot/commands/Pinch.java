@@ -1,3 +1,4 @@
+//The pinching command
 package org.usfirst.frc.team1250.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,9 +17,6 @@ public class Pinch extends Command {
     }
 
     protected void execute() {
-//		Robot.m_claw.pinch();
-			
-
 
     }
 
@@ -27,6 +25,7 @@ public class Pinch extends Command {
     }
 
     protected void end() {
+    //The toggle command for the OP to pinch the box
     	if (!Robot.m_claw.CheckSoloClaw())
     		Robot.m_claw.pinch();
     	else

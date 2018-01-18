@@ -1,3 +1,4 @@
+//This is a manual command for the OP to stop collecting
 package org.usfirst.frc.team1250.robot.commands;
 
 import org.usfirst.frc.team1250.robot.Robot;

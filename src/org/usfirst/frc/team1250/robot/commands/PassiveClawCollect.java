@@ -1,3 +1,4 @@
+//This is a passive collection command
 package org.usfirst.frc.team1250.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
